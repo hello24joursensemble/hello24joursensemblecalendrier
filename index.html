@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#173f35">
+<title>24 jours ensemble — Calendrier de l’Avent 2026</title>
+<style>
+:root{--forest:#173f35;--green:#CFE3B0;--pink:#FFB8CC;--cream:#F4F1E4;--ink:#21352d;--muted:#65766b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--forest);color:var(--cream);font-family:Georgia,"Times New Roman",serif;min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:radial-gradient(var(--green) 1px,transparent 1.5px);background-size:24px 24px}
+main{position:relative;max-width:980px;margin:auto;padding:34px 20px 50px}
+header{text-align:center;padding:18px 10px 26px}
+.kicker{font:600 11px/1.4 Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:var(--green)}
+h1{font-size:clamp(38px,8vw,66px);line-height:1;margin:14px 0 10px;color:var(--pink);font-weight:500}
+.subtitle{font-size:clamp(16px,3vw,21px);color:var(--cream);margin:0 auto;max-width:570px;line-height:1.5}
+.signature{font:italic 15px Arial,sans-serif;color:var(--green);margin-top:13px}
+.status{display:inline-flex;gap:8px;align-items:center;border:1px solid #ffffff35;border-radius:99px;padding:8px 13px;margin-top:20px;font:12px Arial,sans-serif;color:var(--cream)}
+.status span{color:var(--pink)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:10px auto 0}
+.door{min-height:128px;border:1px solid #cfe3b055;border-radius:13px;background:linear-gradient(145deg,#245448,#12362e);color:var(--cream);padding:14px 8px;cursor:pointer;position:relative;overflow:hidden;transition:transform .18s,border-color .18s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.door:hover{transform:translateY(-3px);border-color:var(--pink)}
+.door:focus-visible,button:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+.number{font-size:36px;line-height:1;color:var(--pink)}
+.mini{font:11px Arial,sans-serif;letter-spacing:1px;text-transform:uppercase;color:var(--green)}
+.symbol{font-size:18px}
+.door.opened{background:linear-gradient(145deg,#e9eedc,#dce8cb);color:var(--forest);border-color:var(--green)}
+.door.opened .number{color:var(--forest)} .door.opened .mini{color:#526a54}
+.legend{text-align:center;font:12px Arial,sans-serif;color:#d7e1d2;margin:20px 0 0;line-height:1.7}
+.legend b{color:var(--pink)}
+footer{text-align:center;color:#c7d5c8;font:12px Arial,sans-serif;margin-top:34px;line-height:1.7} footer strong{color:var(--pink);font-weight:normal}
+.overlay{display:none;position:fixed;inset:0;background:#071b16d9;z-index:5;padding:18px;align-items:center;justify-content:center}
+.overlay.show{display:flex}
+.modal{width:min(600px,100%);max-height:90vh;overflow:auto;background:var(--cream);color:var(--ink);border-radius:18px;padding:26px;position:relative;box-shadow:0 20px 80px #0006}
+.close{position:absolute;right:15px;top:12px;border:0;background:transparent;font:26px Arial;color:var(--forest);cursor:pointer}
+.day{font:700 11px Arial;letter-spacing:2px;text-transform:uppercase;color:#617a5d}
+.modal h2{font-size:clamp(25px,5vw,32px);font-weight:500;color:var(--forest);margin:10px 30px 8px 0}
+.intro{font-size:17px;line-height:1.5}
+.modal h3{font:700 12px Arial;letter-spacing:1px;text-transform:uppercase;color:#617a5d;margin:20px 0 8px}
+.modal p,.modal ul{line-height:1.65} .modal ul{padding-left:21px;white-space:pre-line}
+.materials,.tip{background:#e5edda;border-left:3px solid #9fbd83;padding:12px 14px;border-radius:5px;line-height:1.5}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.actions button{border:0;border-radius:99px;padding:11px 16px;background:var(--forest);color:white;font:13px Arial,sans-serif;cursor:pointer}
+.actions button.secondary{background:#dfe8d5;color:var(--forest)}
+@media(max-width:620px){main{padding:25px 13px 35px}.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.door{min-height:112px}.number{font-size:32px}.modal{padding:23px 20px}}
+@media(max-width:370px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media print{body{background:white;color:#173f35}body:before,.status,.legend,footer,.overlay{display:none!important}main{padding:0}.grid{grid-template-columns:repeat(4,1fr)}.door{background:white;color:#173f35;border:1px solid #aaa;min-height:90px}.number{color:#173f35}.mini{color:#526a54}}
+</style></head>
+<body><main>
+<header><div class="kicker">Le calendrier de l’Avent familial · 2026</div>
+<h1>24 jours ensemble</h1>
+<p class="subtitle">Et si le plus beau cadeau, c’était le temps passé ensemble&nbsp;?</p>
+<div class="signature">La magie de Noël ne coûte rien ✨</div>
+<div class="status" id="status"><span>✦</span><b>24 petites surprises à découvrir</b></div></header>
+<section class="grid" id="calendar" aria-label="Calendrier de l'Avent"></section>
+<p class="legend">Les 24 cases sont accessibles : découvrez-les quand vous le souhaitez.<br>Une idée simple, à partager en famille ou entre amis.</p>
+<footer>Fait avec ♥ pour <strong>24 jours ensemble</strong><br>Un Noël rempli de petits moments, pas de dépenses.</footer>
+</main>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+<article class="modal"><button class="close" id="close" aria-label="Fermer">×</button>
+<div class="day" id="modalDay"></div><h2 id="modalTitle"></h2><p class="intro" id="modalIntro"></p>
+<h3>Matériel</h3><div class="materials" id="modalMaterials"></div>
+<h3>À faire ensemble</h3><ul id="modalSteps"></ul>
+<h3>Variante pour les ados</h3><p id="modalTeen"></p>
+<div class="actions"><button onclick="window.print()">Imprimer cette idée</button><button class="secondary" id="done">Marquer comme fait ✓</button></div>
+</article></div>
+<script>
+const activities=[{"day": 1, "date": "1 décembre", "title": "La chasse au trésor de Noël", "category": "Jeu d'observation", "materials": "Papier, stylo, un objet à cacher (étoile en carton, chocolat...)", "intro": "Un adulte cache un objet et prépare 6 indices : chaque indice mène au suivant. Les enfants suivent les indices pour retrouver l'objet caché.", "steps": "1. Choisir l'objet à cacher (une étoile en carton, un chocolat...)\n2. Écrire 6 indices (devinettes ou petites rimes sur Noël)\n3. Cacher les indices en partant de la fin : le dernier indice mène à l'objet\n4. Remettre le premier indice aux enfants\n5. Suivre les indices jusqu'à l'objet caché", "teen": "Indices en photos, en code ou en énigmes de logique. Les ados créent la chasse pour les plus jeunes."}, {"day": 2, "date": "2 décembre", "title": "La recette des roses des sables", "category": "Recette", "materials": "Chocolat, céréales type corn flakes, caissettes, casserole ou micro-ondes", "intro": "De délicieux petits gâteaux au chocolat à préparer ensemble. Les adultes font fondre le chocolat, les enfants enrobent les céréales.", "steps": "1. Faire fondre le chocolat\n2. Ajouter les céréales légèrement écrasées\n3. Former des petits tas dans des caissettes\n4. Réfrigérer 1 h\n5. Déguster\n→ Recette détaillée dans l'onglet « Recettes »", "teen": "Chocolat au lait ou blanc coloré, enrobage de noix de coco râpée ou de noisettes, décoration en pomme de pin."}, {"day": 3, "date": "3 décembre", "title": "Qui es-tu ?", "category": "Jeu", "materials": "Post-it, stylos ou qui-es-tu sur Play station ou prototype à faire", "intro": "Chacun porte un personnage de Noël sur le front et pose des questions auxquelles on répond par oui ou non pour deviner qui il est.", "steps": "1. Écrire un personnage (Père Noël, Grinch, Rudolph, lutin...) sur chaque post-it  2. Coller le post-it sur le front du voisin  3. Poser une question à tour de rôle  4. Deviner  5. Noter les points", "teen": "Personnages de films, de séries ou de la famille."}, {"day": 4, "date": "4 décembre", "title": "Sac à surprises", "category": "Défi sensoriel", "materials": "Un sac opaque, des objets de Noël ou autre (pomme de pin, mandarine, bougie, boule, bonnet, cannelle), un foulard", "intro": "Deviner ce qui se cache dans le sac sans le regarder, avec le toucher (et odorat).", "steps": "1. Cacher des objets dans le sac en vrac\n2. Le joueur plonge la main (ou a les yeux bandés) et touche\n3. Il tire un objet et doit dire ce que c'est\n4. Il donne sa réponse : 1 point par objet deviné\n5. Finir par un objet à sentir : cannelle, orange, clou de girofle", "teen": "Objets plus difficiles, goût à l'aveugle (fruits secs, épices) ou mime sans parler."}, {"day": 5, "date": "5 décembre", "title": "Devine le film en emojis", "category": "Énigme", "materials": "Cartes ou écran", "intro": "Lire une suite d'emojis : les autres devinent le titre du film.", "steps": "1. Choisir 10 énigmes dans l'onglet « Énigmes » (type Emojis)\n2. Les écrire sur des cartes ou les montrer sur un écran\n3. Un point par bonne réponse\n4. Le coup de pouce coûte un demi-point", "teen": "Les ados inventent leurs propres énigmes en emojis pour les adultes."}, {"day": 6, "date": "6 décembre", "title": "Le quiz des souvenirs", "category": "Quiz", "materials": "Papier, stylos, photos de Noëls passés (facultatif)", "intro": "Un quiz de 15 questions sur les Noëls passés de la famille : cadeaux, repas, anecdotes. Combien de Noëls se cachent dans vos mémoires ?", "steps": "1. Préparer 15 questions à partir de souvenirs ou de photos\n2. Former deux équipes\n3. Poser les questions une par une\n4. Compter les points\n5. Terminer en racontant son souvenir de Noël préféré", "teen": "Les ados préparent le quiz pour les adultes, avec des questions pièges et des photos à reconnaître."}, {"day": 7, "date": "7 décembre", "title": "Le jeu du chaud-froid", "category": "Jeu en famille", "materials": "Un petit objet à cacher", "intro": "Un joueur cherche l'objet caché, les autres le guident avec « froid », « tiède », « chaud », « brûlant ».", "steps": "1. Un joueur sort de la pièce\n2. Les autres cachent l'objet\n3. Le joueur revient et cherche\n4. Les autres le guident avec les mots froid, tiède, chaud, brûlant\n5. On change de chercheur à chaque manche", "teen": "Indices uniquement avec des mots de Noël ou des sons (clochettes, chant) à la place de chaud et froid."}, {"day": 8, "date": "8 décembre", "title": "La boîte à gratitude", "category": "Partage", "materials": "Boîte, papiers, stylos, ambiance bougie", "intro": "Chacun glisse un mot de remerciement pour quelqu'un de la famille.", "steps": "1. Décorer la boîte\n2. Écrire un mot\n3. Lire à voix haute le 24", "teen": "Mots anonymes à deviner."}, {"day": 9, "date": "9 décembre", "title": "Chocolat chaud et bar à toppings", "category": "Recette", "materials": "Lait, chocolat, chantilly, guimauves, épices", "intro": "Chacun compose sa tasse avec ses toppings.", "steps": "1. Chauffer le lait\n2. Fondre le chocolat\n3. Servir\n4. Ajouter les toppings\n→ Recette détaillée dans l'onglet « Recettes »", "teen": "Concours de la recette la plus originale (épices, orange...) ou inventer le nom du chocolat chaud créé"}, {"day": 10, "date": "10 décembre", "title": "Une enquête à résoudre", "category": "Énigme", "materials": "Papier, stylo,une loupe (facultatif), le plateau du cluedo pour la déco, enveloppes de 1 à 6", "intro": "Le biscuit porte-bonheur du Père Noël a disparu d’une boîte métallique fermée. Quatre personnes avaient accès aux locaux. Votre équipe doit identifier le coupable, reconstituer la méthode et découvrir le mobile.", "steps": "Dossier Word à imprimer : présentation de l'affaire, fiches des suspects, 6 enveloppes d'indices, feuille de déduction et enveloppe contenant la solution réservée à l'organisateur", "teen": "À adapter selon l’âge et les envies de chacun."}, {"day": 11, "date": "11 décembre", "title": "La danse de Noël", "category": "Musique", "materials": "Enceinte, téléphone, espace dégagé, switch dance si tu as sinon choré sur youtube", "intro": "Inventer une chorégraphie sur un chant de Noël et la présenter en famille.", "steps": "1. Choisir un morceau\n2. Inventer 4 mouvements\n3. Répéter 10 minutes\n4. Présenter à la famille ou filmer", "teen": "Chorégraphie dans le style de leur danse préférée.\nFootloose"}, {"day": 12, "date": "12 décembre", "title": "Noël au laser game", "category": "Activité", "materials": "Matériel à préciser", "intro": "Les consignes de cette activité restent à compléter.", "steps": "Préparez l’activité et profitez de ce moment ensemble !", "teen": "À adapter selon l’âge et les envies de chacun."}, {"day": 13, "date": "13 décembre", "title": "Film de Noël en famille", "category": "Partage", "materials": "Plaid, popcorn, film", "intro": "Une soirée cinéma à la maison, tout le monde au salon.", "steps": "1. Choisir le film\n2. Faire du popcorn\n3. S'installer\n4. Discuter après le film\n→ Recette détaillée dans l'onglet « Recettes »", "teen": "Film choisi par les ados, avec petit débat à la fin."}, {"day": 14, "date": "14 décembre", "title": "Tour infernale", "category": "Activité", "materials": "Matériel à préciser", "intro": "Constituez des équipes ou jouez chacun votre tour.\nVous avez 10 minutes pour construire votre tour.\nVous pouvez casser les spaghettis.\nVous pouvez utiliser uniquement les spaghettis et les chamallows.La tour doit tenir debout toute seule pendant 10 secondes.\n\n\n\nOn mesure la hauteur !", "steps": "20 spaghettis crus par équipe\n10 chamallows par équipe\nUn mètre ou une règleUn chronomètre", "teen": "À adapter selon l’âge et les envies de chacun."}, {"day": 15, "date": "15 décembre", "title": "Crêpes Party", "category": "Recette", "materials": "Matériel à préciser", "intro": "Les consignes de cette activité restent à compléter.", "steps": "Préparez l’activité et profitez de ce moment ensemble !", "teen": "À adapter selon l’âge et les envies de chacun."}, {"day": 16, "date": "16 décembre", "title": "Esquissé de Noël", "category": "Jeu", "materials": "Chaque joueur écrit un mot de Noël sur une feuille, la passe, le voisin le dessine, le suivant devine, et ainsi de suite jusqu’au retour de la feuille", "intro": "Jeu esquissé : alterne phrase/dessin/phrase etc…", "steps": "Préparez l’activité et profitez de ce moment ensemble !", "teen": "À adapter selon l’âge et les envies de chacun."}, {"day": 17, "date": "17 décembre", "title": "Soirée pique nique au salon", "category": "Recette", "materials": "Matériel à préciser", "intro": "Les consignes de cette activité restent à compléter.", "steps": "Préparez l’activité et profitez de ce moment ensemble !", "teen": "À adapter selon l’âge et les envies de chacun."}, {"day": 18, "date": "18 décembre", "title": "Le film mimé", "category": "Jeu", "materials": "Petits papiers, bol, minuteur", "intro": "Mimer un titre de film sans parler, les autres devinent en 60 secondes.", "steps": "1. Écrire 15 titres sur des papiers (Maman j'ai raté l'avion, Le Grinch, Le Pôle Express, Elf, La Reine des neiges, Toy Story, Le Roi Lion, Ratatouille...)\n2. Piocher un papier\n3. Mimer en 60 secondes, sans parler\n4. Un point par titre trouvé", "teen": "Mimer à deux, ou imposer une contrainte (au ralenti, sans les mains)."}, {"day": 19, "date": "19 décembre", "title": "Noël entre copains et copines", "category": "Partage", "materials": "À définir selon l’activité choisie", "intro": "Une journée pour se retrouver entre copains et copines, partager un moment convivial et profiter de l’ambiance de Noël.", "steps": "Choisissez ensemble ce qui vous ferait plaisir : jeux, goûter, cuisine, musique ou échange de petits cadeaux.\nOrganisez votre moment entre amis et profitez-en !", "teen": "Prévoir une activité adaptée à votre groupe : Secret Santa, blind test, jeux ou goûter de Noël."}, {"day": 20, "date": "20 décembre", "title": "Défi cuisine mystère", "category": "Recette", "materials": "Ingrédients mystères, tabliers", "intro": "Chaque équipe cuisine un plat avec le panier d'ingrédients tiré au sort.", "steps": "1. Préparer deux paniers\n2. Tirer au sort\n3. Cuisiner en 45 min\n4. Goûter et noter\n→ Recette détaillée dans l'onglet « Recettes »", "teen": "Contrainte supplémentaire : un ingrédient imposé."}, {"day": 21, "date": "21 décembre", "title": "Le musée familial ", "category": "Partage", "materials": "objet personnel", "intro": "chacun choisit un objet qui lui rappelle un souvenir et raconte son histoire.", "steps": "Préparez l’activité et profitez de ce moment ensemble !", "teen": "À adapter selon l’âge et les envies de chacun."}, {"day": 22, "date": "22 décembre", "title": "Photobooth de Noël", "category": "Défi", "materials": "Matériel à préciser", "intro": "La photo de famille la plus sérieuse.\nLa grimace la plus horrible.\nLa pose du Père Noël.\nLa photo où tout le monde saute.\nLa photo façon groupe de musique.\nLa photo où personne ne doit sourire.\nLa photo la plus ridicule possible.", "steps": "Élisez ensemble :\n- La photo la plus drôle.\n- La meilleure grimace.\n- La photo la plus créative.\n- La photo qui mérite d'être affichée toute l'année !", "teen": "Petit bonus : créez une affiche « Noël 2026 – La famille en folie » avec votre photo préférée."}, {"day": 23, "date": "23 décembre", "title": "Défi : Combien pèse le colis ?", "category": "Défi", "materials": "Un panier, des ingrédients ou des objets même farfelus", "intro": "La mission : un panier ou un colis est posé sur la table. \nChacun doit estimer son poids sans le soulever (ou avec les mains, selon la variante).", "steps": "Préparez l’activité et profitez de ce moment ensemble !", "teen": "À adapter selon l’âge et les envies de chacun."}, {"day": 24, "date": "24 décembre", "title": "Veille de Noël : menu et mini-fête", "category": "Partage", "materials": "Ingrédients du menu, musique", "intro": "Préparer le dîner ensemble avant la fête du 25.", "steps": "1. Répartir les plats\n2. Cuisiner\n3. Dresser la table\n4. Trinquer ensemble\n→ Recette détaillée dans l'onglet « Recettes »", "teen": "Les ados créent le menu et choisissent la musique."}];
+const grid=document.getElementById('calendar'),overlay=document.getElementById('overlay');
+let selected=0;
+const completed=new Set(JSON.parse(localStorage.getItem('24je_completed_2026')||'[]'));
+const icons=["✦","✧","❄","♡","☆","✷","✿","♫","❅","✧","♡","✦","❀","☆","♫","✷","❄","✧","★","❀","♡","❅","✦","♥"];
+function render(){
+ grid.innerHTML='';
+ activities.forEach((a,i)=>{
+  const b=document.createElement('button');b.className='door'+(completed.has(a.day)?' opened':'');
+  b.innerHTML=`<span class="number">${String(a.day).padStart(2,'0')}</span><span class="symbol">${completed.has(a.day)?'✓':icons[i]}</span><span class="mini">${completed.has(a.day)?'Découvert':'Ouvrir'}</span>`;
+  b.setAttribute('aria-label',`Jour ${a.day}, ouvrir : ${a.title}`);
+  b.addEventListener('click',()=>openActivity(i));grid.appendChild(b);
+ });
+ const count=completed.size;document.getElementById('status').innerHTML=`<span>✦</span><b>${count} surprise${count>1?'s':''} réalisée${count>1?'s':''} sur 24</b>`;
+}
+function openActivity(i){
+ selected=i;const a=activities[i];
+ document.getElementById('modalDay').textContent=`${a.date} · Jour ${a.day} · ${a.category}`;
+ document.getElementById('modalTitle').textContent=a.title;
+ document.getElementById('modalIntro').textContent=a.intro;
+ document.getElementById('modalMaterials').textContent=a.materials;
+ const ul=document.getElementById('modalSteps');ul.innerHTML='';
+ a.steps.split(/\n+/).filter(Boolean).forEach(s=>{const li=document.createElement('li');li.textContent=s.replace(/^\d+\.\s*/, '');ul.appendChild(li)});
+ document.getElementById('modalTeen').textContent=a.teen;
+ document.getElementById('done').textContent=completed.has(a.day)?'Déjà réalisé ✓':'Marquer comme fait ✓';
+ overlay.classList.add('show');
+}
+function closeModal(){overlay.classList.remove('show')}
+document.getElementById('close').addEventListener('click',closeModal);
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.getElementById('done').addEventListener('click',()=>{
+ const day=activities[selected].day;if(completed.has(day))completed.delete(day);else completed.add(day);
+ localStorage.setItem('24je_completed_2026',JSON.stringify([...completed]));render();openActivity(selected);
+});
+render();
+</script></body></html>
